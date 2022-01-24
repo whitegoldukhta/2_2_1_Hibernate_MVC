@@ -10,9 +10,5 @@ public interface UserService {
 
     List<User> listUsers();
 
-    void addCar(Car car);
-
-    List<Car> listCars();
-
     User findOwner(String carModel, Integer carSeries);
 }
