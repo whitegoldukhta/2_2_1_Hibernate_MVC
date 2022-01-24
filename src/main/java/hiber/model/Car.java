@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "car")
 public class Car {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -15,25 +16,24 @@ public class Car {
     @Column(name = "series")
     private Integer series;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "user_id")
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
     private User user;
 
-    public Car(User user, String model, Integer series) {
-        this.user = user;
-        this.model = model;
-        this.series = series;
-    }
-
-    public Car() {
-    }
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Car(String model, Integer series) {
+        this.model = model;
+        this.series = series;
+    }
+
+
+    public Car() {
     }
 
     public Integer getSeries() {
@@ -58,5 +58,12 @@ public class Car {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return
+                model +
+                        ", " + series;
     }
 }
