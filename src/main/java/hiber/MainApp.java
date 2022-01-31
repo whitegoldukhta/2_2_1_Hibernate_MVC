@@ -37,7 +37,7 @@ public class MainApp {
             System.out.println("Email = " + user.getEmail());
             System.out.println("Car = " + user.getCar());
         }
-        System.out.println(userService.findOwner("KIA", 5));
+        System.out.println(userService.findOwner("BMW", 3));
 
         context.close();
     }

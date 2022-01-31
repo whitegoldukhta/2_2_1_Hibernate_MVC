@@ -10,5 +10,5 @@ public interface UserDao {
 
     List<User> listUsers();
 
-    User findOwner(String carModel, Integer carSeries);
+    List<User> findOwner(String carModel, Integer carSeries);
 }
