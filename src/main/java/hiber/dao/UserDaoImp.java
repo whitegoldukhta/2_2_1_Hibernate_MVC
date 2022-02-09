@@ -22,7 +22,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public List<User> listUsers() {
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User", User.class);
         return query.getResultList();
     }
 
@@ -30,7 +30,7 @@ public class UserDaoImp implements UserDao {
     @Override
     public List<User> findOwner(String carModel, Integer carSeries) {
 
-        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User u WHERE u.car.model=?1 AND u.car.series=?2");
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("FROM User u WHERE u.car.model=?1 AND u.car.series=?2", User.class);
         query.setParameter(1, carModel);
         query.setParameter(2, carSeries);
 
